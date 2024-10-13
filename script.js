@@ -11,10 +11,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
         { text: "Or the snow cap of a mountain top?", delay: 0.08 },
         { text: "Or the Northern Lights set in motion?", delay: 0.07 },
         { text: "Or a heartbeat slow to a stop?", delay: 0.17 },
+
         { text: "Have you read a book by candlelight?", delay: 0.08 },
         { text: "Or heard a leader's call to arms?", delay: 0.11 },
         { text: "Have you ever felt my love burn so bright", delay: 0.12 },
-        { text: "Like a fireball in your palm?", delay: 0.1 }, //8th line
+        { text: "Like a fireball in your palm?", delay: 0.1 }, //4th line
         
         { text: "More than all the things that I've seen", delay: 0.12 },
         { text: "You will always be part of my tapestry", delay: 0.09 },
@@ -26,7 +27,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         { text: "Just to take a little moment, mmm", delay: 0.11 },
         { text: "To see what's mine and yours?", delay: 0.1 }, //4th line
 
-        { text: "More than all the things that I've seen", delay: 0.12 },
+        { text: "More than all the things that I've seen", delay: 0.134 },
         { text: "You will always be part of my tapestry", delay: 0.09 },
         { text: "More than all the places I've been", delay: 0.13 },
         { text: "You will always be part of my tapestry", delay: 0.07 }, //4th line
@@ -40,19 +41,22 @@ document.addEventListener('DOMContentLoaded', (event) => {
         { text: "You will always be part of my tapestry", delay: 0.09 },
         { text: "More than all the places I've been", delay: 0.13 },
         { text: "You will always be part of my tapestry", delay: 0.07 }, //4th line
-        { text: "...", delay: 1},
+        
+        { text: "...Happy Birthday my love", delay: 0.2},
 
     ];
 
-    const delays = [5, 4, 3, 2.5, 3, 3.9, 1.8, 
+    const delays = [5, 4, 3, 
+        .5, 3, 3.9, 1.8, 
         2, 1.2, 2.2, 1.7, 
         3, 4.8, 3.5, 3.9,
-        1.7, 1.2, 2.2, 1.7,
+        2.2, 1, 2.2, 1.7,
         .1, .12, 2.5, .3,
-        5.5, 1.9, 2.4, 1.9, .1];
+        5.5, 1.2, 2.4, 1.9, 
+        .1];
 
     // Array to specify how many lines each group should have
-    const groupSizes = [8, 4, 4, 4, 4, 5];  // Example: first group 3 lines, second group 5 lines, third group 4 lines
+    const groupSizes = [4, 4, 4, 4, 4, 4, 4, 1];  // Example: first group 3 lines, second group 5 lines, third group 4 lines
 
      // Set an initial delay before the first line appears
      const initialDelay = 1000; // 3000ms = 3 seconds, adjust as needed
@@ -83,10 +87,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
                  // Add a line break after each line
                  lyricsContainer.innerHTML += '\n';
 
-                 // Wait for the line's delay
-                 await new Promise(resolve => setTimeout(resolve, delays[currentLine] * 1000));
-             }
- 
+                 if (currentLine === lyrics.length - 1) {
+                    // If it's the last line, apply a custom delay for fading out
+                    await new Promise(resolve => setTimeout(resolve, 4000)); // Adjust this custom delay
+                } else {
+                    await new Promise(resolve => setTimeout(resolve, delays[currentLine] * 1000));
+                }
+            }
              // After showing the lines in the current group, fade out and clear the lyrics
              await fadeOutLyrics(lyricsContainer);
              lyricsContainer.innerHTML = '';  // Clear the container
