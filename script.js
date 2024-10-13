@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
          // Create a new div for the background animation (e.g., video, image, etc.)
          const backgroundFade = document.createElement('div');
          backgroundFade.className = 'background-fade';
-         backgroundFade.style.backgroundImage = 'url("./dudu.gif")';
+         backgroundFade.style.backgroundImage = 'url("./bubu-dudu-flower-gift.gif")';
          body.appendChild(backgroundFade);
  
          // Start displaying lyrics
